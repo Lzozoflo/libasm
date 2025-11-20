@@ -1,0 +1,8 @@
+*subject*
+.vscode
+.obj
+.dep
+*.o
+error
+hello
+libasm.a
