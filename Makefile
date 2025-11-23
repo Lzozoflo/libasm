@@ -1,3 +1,4 @@
+.PHONY: all clean fclean re    clear c fclear f test
 
 
 ###############################################
@@ -31,7 +32,7 @@ MAIN        := main.c
 #                 RULES                       #
 ###############################################
 
-.PHONY: all clean fclean re    clear c fclear f test
+
 
 all: $(NAME)
 
@@ -39,6 +40,7 @@ all: $(NAME)
 ###############################################
 #       COMPILATION DE LA LIB STATIQUE        #
 ###############################################
+
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
@@ -49,6 +51,7 @@ $(NAME): $(OBJ)
 #        COMPILATION ASM → OBJ                #
 ###############################################
 
+
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.s
 	mkdir -p $(OBJ_DIR)
 	$(NASM) $(NASMFLAGS) $< -o $@
@@ -58,18 +61,23 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.s
 #            COMPILATION DU TEST              #
 ###############################################
 
+
 test: all
 	$(CC) $(CFLAGS) $(MAIN) $(NAME) -o $(BINARY_NAME)
-	@echo "✔ exécutable créé : ./$(BINARY_NAME)"
+	@echo "✔ exécutable créé : ./$(BINARY_NAME) $(ARG)"
+	@echo -n "-----------------------------------------------------------------------------"
+	@./$(BINARY_NAME) $(ARG)
 
 
 ###############################################
 #                CLEANING                     #
 ###############################################
 
+
 clean:
 	rm -rf $(OBJ_DIR)
 	@echo "✔ objets supprimés"
+
 
 fclean: clean
 	rm -f $(NAME) $(BINARY_NAME)
@@ -79,9 +87,9 @@ fclean: clean
 c					:	clean
 clear				:	clean
 
+
 f					:	fclean
 fclear				:	fclean
-
 
 
 re: fclean all
