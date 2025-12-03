@@ -17,8 +17,8 @@
 ###############################################
 
 SRC		+= ft_strlen.s
-SRC		+= ft_strcmp.s
 SRC		+= ft_strcpy.s
+SRC		+= ft_strcmp.s
 # SRC		+= ft_strdup.s
 # SRC		+= ft_write.s
 # SRC		+= ft_read.s

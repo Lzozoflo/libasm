@@ -40,7 +40,7 @@ int main(int ac, char** av)
 		char *dest = malloc(sizeof(char) * (ft_strlen(av[i]) + 1));
 
 		printf("\n\nav[%d] : '%s'", i, av[i]);
-		// printf("\nft_strcpy(av[%d], 'av2') dest: '%s'", i, ft_strcpy(dest, av[i]));
+		printf("\nft_strcpy(dest, av[%d]) dest: '%s'", i, ft_strcpy(dest, av[i]));
 		printf("\nstrcpy(dest, av[%d]) dest : '%s'", i, strcpy(dest, av[i]));
 	}
 	printf("\n\n------ {-[strcpy]-} ------");
