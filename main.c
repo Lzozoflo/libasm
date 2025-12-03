@@ -5,10 +5,10 @@
 
 
 
-
 //from libasm.a
 extern int ft_strlen(char *s);
-extern int ft_strcmp (const char *s1, const char *s2);
+extern int ft_strcmp(const char *s1, const char *s2);
+extern char *ft_strcpy(const char *s1, const char *s2);
 
 
 
