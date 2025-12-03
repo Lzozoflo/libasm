@@ -42,7 +42,10 @@ int main(int ac, char** av)
 		printf("\n\nav[%d] : '%s'", i, av[i]);
 		printf("\nft_strcpy(dest, av[%d]) dest: '%s'", i, ft_strcpy(dest, av[i]));
 		printf("\nstrcpy(dest, av[%d]) dest : '%s'", i, strcpy(dest, av[i]));
+		free(dest);
 	}
+
+
 	printf("\n\n------ {-[strcpy]-} ------");
 	return (0);
 }
