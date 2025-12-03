@@ -86,6 +86,7 @@ not rbx         ; inverse tous les bits
 1 XOR 1 = 0
 
 xor rax, rax    ; met rax à 0
+
 ```
 ### AND — ET logique
 ```asm

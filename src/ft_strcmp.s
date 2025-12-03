@@ -1,4 +1,5 @@
 
+; extern int ft_strcmp(const char *s1, const char *s2);
 
 section .text
 	global ft_strcmp
@@ -7,7 +8,7 @@ section .text
 			jmp .loop						; je vais dans la loop (.loop)
 
 			.loop:
-				mov		al, [rdi]			; recupere le char dans la string au dereferancement
+				mov		ax, [rdi]			; recupere le char dans la string au dereferancement *s1 s1[1]
 				mov		bl, [rsi]			; recupere le char dans la string au dereferancement
 				cmp		al, bl				; cmp les 2 octet et change les flag
 				jne		.not_same			; is cmp 1 != 2 go to..

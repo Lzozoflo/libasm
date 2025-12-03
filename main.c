@@ -9,6 +9,9 @@
 extern int ft_strlen(char *s);
 extern int ft_strcmp(const char *s1, const char *s2);
 extern char *ft_strcpy(const char *s1, const char *s2);
+extern ssize_t ft_write(int fd, const void *buf, size_t count);
+extern ssize_t ft_read(int fd, void *buf, size_t count);
+
 
 
 
@@ -46,6 +49,14 @@ int main(int ac, char** av)
 	}
 
 
-	printf("\n\n------ {-[strcpy]-} ------");
+	printf("\n\n------ {-[write]-} ------\n");
+	for (int i = 1; i < ac; i++) {
+		printf("\n\nav[%d] : '%s'\n", i, av[i]);
+		printf("\nreturn write : '%zd'\n", ft_write(1, av[i], ft_strlen(av[i])));
+	}
+	printf("\n------ {-[read]-} ------");
+	char buff[10];
+ssize_t read(int fd, void *buf, size_t count);
+	ft_read(0,buff, 9);
 	return (0);
 }
