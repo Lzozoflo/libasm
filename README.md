@@ -19,15 +19,16 @@
 
 ## Argumente list
 
-|      #     |   64-bit & long ptr |   32-bit & int  |   16-bit & short |   8-bit & char  |
-| :----:     | :----:    | :----:    | :----:    | :----:    | 
-|    arg1    |   rdi     |   edi     |   di      | dil       |
-|    arg2    |   rsi     |   esi     |   si      | sil       |
-|    arg3    |   rdx     |   edx     |   dx      | dh:dl     |
-|    arg4    |   rcx     |   ecx     |   cx      | ch:cl     |
-|    arg5    |   r8      |   r8d     |   r8w     | r8b       |
-|    arg6    |   r9      |   r9d     |   r9w     | r9b       |
-| stack pointer | rsp    |   esp     |   sp      | spl       |
+|      #        |   64-bit & long ptr |   32-bit & int  |   16-bit & short |   8-bit & char  |
+| :----:        | :----:              | :----:          | :----:           | :----:          |
+| Return value  |   rax               |   eax           |   ax             | al              |
+|    arg1       |   rdi               |   edi           |   di             | dil             |
+|    arg2       |   rsi               |   esi           |   si             | sil             |
+|    arg3       |   rdx               |   edx           |   dx             | dh:dl           |
+|    arg4       |   rcx               |   ecx           |   cx             | ch:cl           |
+|    arg5       |   r8                |   r8d           |   r8w            | r8b             |
+|    arg6       |   r9                |   r9d           |   r9w            | r9b             |
+| stack pointer | rsp                 |   esp           |   sp             | spl             |
 
 
 
@@ -37,8 +38,6 @@
 xor rax, rax > mov rax, 0
 test rsi, rsi > cmp rsi, 0
 ```
-
-
 
 ## Utile
 
