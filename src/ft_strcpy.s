@@ -1,9 +1,9 @@
 
 
 section .text
-	global ft_strcmp
+	global ft_strcpy
 
-		ft_strcmp:
+		ft_strcpy:
 			jmp .loop						; je vais dans la loop (.loop)
 
 			.loop:

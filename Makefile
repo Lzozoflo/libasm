@@ -69,7 +69,7 @@ test: all
 	else \
 		echo "-----------------------------------------------------------------------------";\
 		echo "✔ exécutable créé et lancé avec : ./$(BINARY_NAME) [$(ARG)] [$(ARG2)]"; \
-		./$(BINARY_NAME) $(ARG); \
+		./$(BINARY_NAME) $(ARG) $(ARG2); \
 	fi
 	@rm -rf $(OBJ_DIR)
 	@rm $(BINARY_NAME)
