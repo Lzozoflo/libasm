@@ -61,12 +61,18 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.s
 #            COMPILATION DU TEST              #
 ###############################################
 
-
 test: all
 	$(CC) $(CFLAGS) $(MAIN) $(NAME) -o $(BINARY_NAME)
-	@echo "✔ exécutable créé : ./$(BINARY_NAME) $(ARG)"
-	@echo -n "-----------------------------------------------------------------------------"
-	@./$(BINARY_NAME) $(ARG)
+	@if [ -z "$(ARG)" ]; then \
+		echo "❌ ARG est vide, veuillez fournir un argument."; \
+		exit 42; \
+	else \
+		echo "-----------------------------------------------------------------------------";\
+		echo "✔ exécutable créé et lancé avec : ./$(BINARY_NAME) [$(ARG)] [$(ARG2)]"; \
+		./$(BINARY_NAME) $(ARG); \
+	fi
+	@rm -rf $(OBJ_DIR)
+	@rm $(BINARY_NAME)
 
 
 ###############################################

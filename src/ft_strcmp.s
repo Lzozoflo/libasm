@@ -12,13 +12,13 @@ section .text
 				cmp		al, bl				; cmp les 2 octet et change les flag
 				jne		.not_same			; is cmp 1 != 2 go to..
 				test	al, al				; on regarde si == '\0' (que sur al pck si bl etait pas un '\0' et al oui il serait sortie avant	)
-				jz		.done				; si == '\0' finish return 0
+				je		.done				; si == '\0' finish return 0
 				inc		rdi					; rdi++
 				inc		rsi					; rsi++
 				jmp		.loop				; go to loop
 
 			.not_same:
-				sub al, bl				; al = al - bl (8 bits, overflow ignoré)
+				sub al, bl					; al = al - bl (8 bits, overflow ignoré)
 				movsx rax, al				; rangement de registre (avec bit signer)
 				ret							; return cette meme value
 
