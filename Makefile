@@ -76,6 +76,20 @@ test: all
 	@rm -rf $(OBJ_DIR)
 	@rm $(BINARY_NAME)
 
+vtest: all
+	$(CC) $(CFLAGS) -g3 $(MAIN) $(NAME) -o $(BINARY_NAME)
+
+	@if [ -z "$(ARG)" ]; then \
+		echo "❌ ARG est vide, veuillez fournir un argument."; \
+		exit 42; \
+	else \
+		echo "-----------------------------------------------------------------------------";\
+		echo "✔ exécutable créé et lancé avec : ./$(BINARY_NAME) [$(ARG)] [$(ARG2)]"; \
+		valgrind ./$(BINARY_NAME) $(ARG) $(ARG2); \
+	fi
+
+	@rm -rf $(OBJ_DIR)
+	@rm $(BINARY_NAME)
 
 ###############################################
 #                CLEANING                     #
