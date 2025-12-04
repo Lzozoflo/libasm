@@ -13,6 +13,7 @@ CFLAGS      := -Wall -Wextra -Werror
 
 NASM        := nasm
 NASMFLAGS   := -f elf64
+DEBUGNASMFLAGS	= -g3 -F dwarf
 
 SRC_DIR     := src
 OBJ_DIR     := .obj
@@ -54,12 +55,15 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.s
 	mkdir -p $(OBJ_DIR)
-	$(NASM) $(NASMFLAGS) $< -o $@
+	$(NASM) $(NASMFLAGS) $(DEBUGNASMFLAGS) $< -o $@
 
 
 ###############################################
 #            COMPILATION DU TEST              #
 ###############################################
+
+prog: all
+	gcc $(CFLAGS) -g3 $(MAIN) $(NAME) -o $(BINARY_NAME)
 
 test: all
 	$(CC) $(CFLAGS) $(MAIN) $(NAME) -o $(BINARY_NAME)
@@ -85,7 +89,7 @@ vtest: all
 	else \
 		echo "-----------------------------------------------------------------------------";\
 		echo "✔ exécutable créé et lancé avec : ./$(BINARY_NAME) [$(ARG)] [$(ARG2)]"; \
-		valgrind ./$(BINARY_NAME) $(ARG) $(ARG2); \
+		valgrind --leak-check=full --show-leak-kinds=all --show-mismatched-frees=yes --track-fds=yes --trace-children=yes ./$(BINARY_NAME) $(ARG) $(ARG2); \
 	fi
 
 	@rm -rf $(OBJ_DIR)

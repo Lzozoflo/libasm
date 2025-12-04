@@ -3,7 +3,7 @@
 global ft_write
 section .text
 
-		ft_write:
-			mov rax, 1					; rax was the nb in the tab syscall
-			syscall						; call syscall nb(rax)
-			ret							; return rax(dest)
+	ft_write:
+		mov rax, 1					; rax was the nb in the tab syscall
+		syscall						; call syscall nb(rax)
+		ret							; return rax(dest)
