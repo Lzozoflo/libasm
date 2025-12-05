@@ -47,22 +47,36 @@ int main(int ac, char** av)
 	// 	printf("\nreturn write : '%zd'\n", ft_write(1, av[i], ft_strlen(av[i])));
 	// }
 
-	printf("\n\n------ {-[ft_strdup]-} ------\n");
-	for (int i = 1; i < ac; i++) {
-		printf("\n\nav[%d] : '%s'\n", i, av[i]);
-		char * ptr = ft_strdup(av[i]);
-		printf("\nptr malloced from ft_strdup : '%s'\n", ptr);
-		free(ptr);
-	}
+	// printf("\n\n------ {-[ft_strdup]-} ------\n");
+	// for (int i = 1; i < ac; i++) {
+	// 	printf("\n\nav[%d] : '%s'\n", i, av[i]);
+	// 	char * ptr = ft_strdup(av[i]);
+	// 	printf("\nptr malloced from ft_strdup : '%s'\n", ptr);
+	// 	free(ptr);
+	// }
 
-	// printf("\n------ {-[read]-} ------");
-// 	char buff[10];
-// 	ft_read(0,buff, 9);
+	// printf("\n\n------ {-[read]-} ------");
+	// 	char buff[10];
+	// 	ft_read(0,buff, 9);
 
-	t_list *node = ft_list_new(42);
 
-	printf("node p: %p\n", node);
-	printf("data d: %d\n", node->data);
-	printf("next p: %p\n", node->next);
+	printf("\n\n------ {-[bonus part]-} ------");
+
+		printf("\n\t------ {-[my_bonus part]-} ------");
+		t_list *node = ft_list_new(42);
+		printf("\nnode p: %p, adr_data: %p, data: %d", node, &node->data, node->data);
+
+		printf("\n\n\t------ {-[ft_list_size]-} ------");
+
+		t_list *node2 = ft_list_new(21);
+
+		printf("\nnode p: %p, adr_data: %p, data: %d", &node, &(node->data), node->data);
+		printf("\nnode2 p: %p, adr_data %p, data: %d", &node2, &(node2->data), node2->data);
+		printf("\n\nft_list_push_front(&node, node2);");
+		ft_list_push_front(&node, node2);
+		printf("\n\nnode p: %p", node);
+		printf("\nnode->data d: %d", node->data);
+		printf("\nnode->next p: %p", node->next);
+
 	return (0);
 }
