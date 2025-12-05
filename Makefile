@@ -9,7 +9,7 @@ NAME        := libasm.a
 BINARY_NAME := program
 
 CC          := cc
-CFLAGS      := -Wall -Wextra -Werror
+CFLAGS      := -Wall -Wextra -Werror -I ./inc
 
 NASM        := nasm
 NASMFLAGS   := -f elf64
