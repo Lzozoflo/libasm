@@ -16,8 +16,32 @@ extern malloc;
 section .text
 
 	ft_list_push_front:
-		mov		rdx, qword [rsi]					; value of the ptr
-		mov		qword [rdi + OFFSET_NEXT], rdx		;
-		mov		[rdi], rsi
-		ret									; return rax(the node)
+		jmp	.ft_list_new
+
+		.ft_list_new:
+			push	rdi										; save 1st-arg
+			push	rsi										; save 2st-arg
+			mov		rdi, 16									; rdi = rax (len + 1)
+			call	malloc	wrt ..plt						; malloc (rdi(len + 1))
+			pop		rsi										; take the save of the 2nd-arg
+			mov		esi, [rsi]								; take the int value inside ptr (var = *rsi)
+			mov		dword [rax + OFFSET_DATA], esi			; use 4 octet = data and data = value(edi(4 octet(int)))
+			mov		qword [rax + OFFSET_NEXT], 0			; at octet 8 use 8 octet = next and next take NULL
+			jmp		.push_front								; return rax(the node)
+
+		.push_front:
+			pop		rdi									; take the save of the 1st-arg
+			mov		rdx, qword [rdi]					; void *ptr = *begin_list
+			mov		qword [rax + OFFSET_NEXT], rdx		; rsi.next = rdi
+			mov		[rdi], rax							; *rdi = data
+			ret											; return rax(the node)
+
+
+
+
+	; ft_list_push_front:
+	; 	mov		rdx, qword [rdi]					; void *ptr = *begin_list
+	; 	mov		qword [rsi + OFFSET_NEXT], rdx		; rsi.next = rdi
+	; 	mov		[rdi], rsi							; *rdi = data
+	; 	ret											; return rax(the node)
 

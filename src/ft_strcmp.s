@@ -7,7 +7,7 @@ section .text
 
 	ft_strcmp:
 		jmp .loop						; go to ".loop"
-
+;---------------------------------------------------------------------
 		.loop:
 			mov		al, [rdi]			; recup le char a *str1
 			mov		r8b, [rsi]			; recup le char a *str2

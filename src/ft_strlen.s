@@ -1,12 +1,15 @@
 
+		; test	rdi,	rdi					; mets a jour les flags
+		; je		.done						; si rdi == NULL go to ".done"
+
+;	extern int		ft_strlen	(char *s);
+;	extern int		ft_strlen	(rdi);
 
 global ft_strlen
 section .text
 
 	ft_strlen:
 		xor		rax,	rax					; int i = 0 (mov rax, 0)
-		; test	rdi,	rdi					; mets a jour les flags
-		; je		.done						; si rdi == NULL go to ".done"
 		jmp		.loop						; go to ".loop"
 ;---------------------------------------------------------------------
 		.loop:

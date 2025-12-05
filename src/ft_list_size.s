@@ -8,8 +8,8 @@
 
 
 
-; extern void *ft_list_size(t_list *ptr);
-;			   ft_list_size(rdi);
+; extern int ft_list_size(t_list *begin_list);
+;			 ft_list_size(rdi);
 
 
 global ft_list_size
@@ -18,12 +18,17 @@ extern malloc;
 section .text
 
 	ft_list_size:
-		xor		rax,rax						; rax = 0
+		xor		rax,rax								; rax = 0
+		jmp		.loop								; go to ".loop"
+;---------------------------------------------------------------------
+		.loop;
+			test	rdi, rdi						; mets a jours les flags
+			je		.done							; si rdi == NULL go to ".done"
+			mov		rdi, qword [rdi + OFFSET_NEXT]	; rdi = rdi.next
+			inc		rax								;
+			jmp		.loop							; go to ".loop"
+;---------------------------------------------------------------------
+		.done:
+			ret										; return rax(
 
-
-
-
-
-
-		ret									; return rax(the node)
 

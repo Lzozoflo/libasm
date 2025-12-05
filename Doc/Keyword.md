@@ -4,7 +4,7 @@
 | Directive | Signification | Octets | Bits |
 | :--- | :--- | :--- | :--- |
 |	**`bytes`**	|	Define Byte				|	1		|	8		|
-|	**`word	`**|	Define Word				|	2		|	16		|
+|	**`word	`**	|	Define Word				|	2		|	16		|
 |	**`dword`**	|	Define Double-word		|	4		|	32		|
 |	**`qword`**	|	Define Quad-word		|	8		|	64		|
 |	**`tword`**	|	Define Ten-bytes		|	10		|	80		|

@@ -61,22 +61,42 @@ int main(int ac, char** av)
 
 
 	printf("\n\n------ {-[bonus part]-} ------");
-
-		printf("\n\t------ {-[my_bonus part]-} ------");
+	{
+		printf("\n------ {-[my_bonus part]-} ------");
 		t_list *node = ft_list_new(42);
-		printf("\nnode p: %p, adr_data: %p, data: %d", node, &node->data, node->data);
+		printf("\n\nnode p: %p, adr_data: %p, data: %d", node, &node->data, node->data);
 
-		printf("\n\n\t------ {-[ft_list_size]-} ------");
 
-		t_list *node2 = ft_list_new(21);
 
-		printf("\nnode p: %p, adr_data: %p, data: %d", &node, &(node->data), node->data);
-		printf("\nnode2 p: %p, adr_data %p, data: %d", &node2, &(node2->data), node2->data);
-		printf("\n\nft_list_push_front(&node, node2);");
-		ft_list_push_front(&node, node2);
-		printf("\n\nnode p: %p", node);
-		printf("\nnode->data d: %d", node->data);
-		printf("\nnode->next p: %p", node->next);
+		printf("\n\n------ {-[ft_list_push_front]-} ------");
 
+
+		int	value = 42 * 0.5;
+		printf("\n\n\tft_list_push_front(&node, &value: %d);\n", value);
+		ft_list_push_front(&node, &value);
+		printf("\nnode p: %p, adr_data: %p, data: %d, next: %p", node, &node->data, node->data, node->next);
+
+		value *= 0.5;
+		printf("\n\n\tft_list_push_front(&node, &value: %d);\n", value);
+		ft_list_push_front(&node, &value);
+		printf("\nnode p: %p, adr_data: %p, data: %d, next: %p\n", node, &node->data, node->data, node->next);
+
+		t_list *tmp = node;
+		while (tmp)
+		{
+			printf("\nmp p: %p, adr_data: %p, data: %d, next: %p", tmp, &tmp->data, tmp->data, tmp->next);
+			tmp = tmp->next;
+			/* code */
+		}
+
+		// printf("\nnode->next->data : %d", node->next->data);
+		// printf("\nnode->next->next p: %p", node->next->next);
+
+		printf("\n\n------ {-[nft_list_size]-} ------");
+
+		printf("\n\nft_list_size(node): %d", ft_list_size(node));
+
+		printf("\n\n------ {-[ft_list_push_front]-} ------");
+	}
 	return (0);
 }

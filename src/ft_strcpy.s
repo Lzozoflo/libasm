@@ -9,7 +9,7 @@ section .text
 	ft_strcpy:
 		xor		rax, rax
 		jmp		.loop					; go to ".loop"
-
+;---------------------------------------------------------------------
 		.loop:
 			mov		r8b, [rsi + rax]	; recup le char a src[i]
 			mov		[rdi + rax], r8b	; cpy le char de src[i] dans dest

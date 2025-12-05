@@ -20,7 +20,7 @@ extern char		*ft_strdup	(const char *str);									// Mandatory
 
 
 extern void		ft_list_push_front(t_list **begin_list, void *data);				// Bonus
-extern void		*ft_list_size(t_list *ptr);										// Bonus
+extern int		ft_list_size(t_list *begin_list);										// Bonus
 
 
 extern void		*ft_list_new(int value); 										// my bonus
