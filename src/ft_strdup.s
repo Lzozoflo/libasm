@@ -1,6 +1,7 @@
 
 ; extern char *ft_strdup(const char *str);
 ;			   ft_strdup(rdi);
+
 global ft_strdup
 extern ft_strlen;
 extern ft_strcpy;

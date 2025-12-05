@@ -8,15 +8,15 @@ section .text
 
 	ft_strcpy:
 		xor		rax, rax
-		jmp		.loop					; je vais dans la loop (.loop)
+		jmp		.loop					; go to ".loop"
 
 		.loop:
-			mov		r8b, [rsi + rax]	; recupere le char dans src
-			mov		[rdi + rax], r8b	; cpy le char de src dans dest
+			mov		r8b, [rsi + rax]	; recup le char a src[i]
+			mov		[rdi + rax], r8b	; cpy le char de src[i] dans dest
 			test	r8b, r8b			; mets a jour les flag
-			je		.done				; si == '\0' finish return 0
+			je		.done				; si == '\0' go to ".done"
 			inc		rax					; rax++
-			jmp		.loop				; go to loop
+			jmp		.loop				; go to ".loop"
 ;---------------------------------------------------------------------
 		.done:
 			mov rax, rdi				; rax = dest
