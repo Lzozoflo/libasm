@@ -6,17 +6,7 @@
 x86 registers do not have an intrinsic role imposed by the architecture.
 Their “traditional” usage comes mainly from conventions and historical habits, rather than from any hardware constraint.
 
-## dereferance de N octet default 8
-```
-	- word    [register] ; 2  octets
-	- dword   [register] ; 4  octets
-	- qword   [register] ; 8  octets
-	- tword   [register] ; 10 octets
-	- oword   [register] ; 16 octets
-	- yword   [register] ; 32 octets
-	- zword   [register] ; 64 octets
 
-```
 ## type of register
 
 | #              | Register  | Lower dword | Lower word | Lower byte |

@@ -19,11 +19,11 @@ section .text
 			inc		rsi					; rsi++
 			jmp		.loop				; go to ".loop"
 ;---------------------------------------------------------------------
-		.not_same:
-			sub al, r8b					; al = al - r8b (8 bits, overflow ignoré)
-			movsx rax, al				; upgrade de registre (avec bit signer) (movzx pour non signer)
-			ret							; return rax
+			.not_same:
+				sub al, r8b					; al = al - r8b (8 bits, overflow ignoré)
+				movsx rax, al				; upgrade de registre (avec bit signer) (movzx pour non signer)
+				ret							; return rax
 ;---------------------------------------------------------------------
-		.done:
-			xor rax, rax				; rax = 0
-			ret							; return 0
+			.done:
+				xor rax, rax				; rax = 0
+				ret							; return 0

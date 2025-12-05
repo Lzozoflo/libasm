@@ -47,13 +47,13 @@ int main(int ac, char** av)
 	// 	printf("\nreturn write : '%zd'\n", ft_write(1, av[i], ft_strlen(av[i])));
 	// }
 
-	// printf("\n\n------ {-[ft_strdup]-} ------\n");
-	// for (int i = 1; i < ac; i++) {
-	// 	printf("\n\nav[%d] : '%s'\n", i, av[i]);
-	// 	char * ptr = ft_strdup(av[i]);
-	// 	printf("\nptr malloced from ft_strdup : '%s'\n", ptr);
-	// 	free(ptr);
-	// }
+	printf("\n\n------ {-[ft_strdup]-} ------\n");
+	for (int i = 1; i < ac; i++) {
+		printf("\n\nav[%d] : '%s'\n", i, av[i]);
+		char * ptr = ft_strdup(av[i]);
+		printf("\nptr malloced from ft_strdup : '%s'\n", ptr);
+		free(ptr);
+	}
 
 	// printf("\n------ {-[read]-} ------");
 // 	char buff[10];

@@ -1,18 +1,22 @@
 # libasm
 
 ## section .data
+code exécutable
 ; The data section is used for declaring initialized data or constants. This data does not change at runtime.
 ; You can declare various constant values, file names, or buffer size, etc., in this section.
 
+## section .rodata
+	valeur constante non modifiable
 
 ## section .bss
 ; The bss section is used for declaring variables. The syntax for declaring bss section is −
 
 
 ## section .text
-; The text section is used for keeping the actual code.
-; This section must begin with the declaration global _start, which tells the kernel where the program execution begins.
-
+```
+The text section is used for keeping the actual code.
+This section must begin with the declaration global _start, which tells the kernel where the program execution begins.
+```
 
 
 
