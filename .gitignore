@@ -10,4 +10,4 @@ program
 a.out
 gdinit.txt
 .gdb_history
-*/ft_list_new.s
+# */ft_list_new.s
