@@ -63,30 +63,28 @@ int main(int ac, char** av)
 	printf("\n\n------ {-[bonus part]-} ------");
 	{
 		printf("\n------ {-[my_bonus part]-} ------");
-		t_list *node = ft_list_new(42);
-		printf("\n\nnode p: %p, adr_data: %p, data: %d", node, &node->data, node->data);
+		t_list *node = ft_list_new(av[1]);
+		printf("\n\nnode p: %p, adr_data: %p, data: '%s", node, &node->data, node->data);
 
 
 
 		printf("\n\n------ {-[ft_list_push_front]-} ------");
 
+		for (int i = 2; i < ac; i++) {
+			printf("\n\nft_list_push_front(&node, &av[i]: '%s');\n", av[i]);
+			ft_list_push_front(&node, av[i]);
+			printf("\nnode p: %p, adr_data: %p, data: '%s', next: %p", node, &node->data, node->data, node->next);
+		}
 
-		int	value = 42 * 0.5;
-		printf("\n\n\tft_list_push_front(&node, &value: %d);\n", value);
-		ft_list_push_front(&node, &value);
-		printf("\nnode p: %p, adr_data: %p, data: %d, next: %p", node, &node->data, node->data, node->next);
-
-		value *= 0.5;
-		printf("\n\n\tft_list_push_front(&node, &value: %d);\n", value);
-		ft_list_push_front(&node, &value);
-		printf("\nnode p: %p, adr_data: %p, data: %d, next: %p\n", node, &node->data, node->data, node->next);
-
-		t_list *tmp = node;
-		while (tmp)
 		{
-			printf("\nmp p: %p, adr_data: %p, data: %d, next: %p", tmp, &tmp->data, tmp->data, tmp->next);
-			tmp = tmp->next;
-			/* code */
+			printf("\n\n------ {-[print list]-} ------");
+			t_list *tmp = node;
+			while (tmp)
+			{
+				printf("\ntmp p: %p, adr_data: %p, data: '%s', next: %p", tmp, &tmp->data, tmp->data, tmp->next);
+				tmp = tmp->next;
+				/* code */
+			}
 		}
 
 		// printf("\nnode->next->data : %d", node->next->data);
@@ -96,7 +94,20 @@ int main(int ac, char** av)
 
 		printf("\n\nft_list_size(node): %d", ft_list_size(node));
 
-		printf("\n\n------ {-[ft_list_push_front]-} ------");
+		printf("\n\n------ {-[ft_list_sort]-} ------");
+		ft_list_sort(&node, ft_strcmp);
+
+
+		{
+			printf("\n\n------ {-[print list]-} ------");
+			t_list *tmp = node;
+			while (tmp)
+			{
+				printf("\ntmp p: %p, adr_data: %p, data: '%s', next: %p", tmp, &tmp->data, tmp->data, tmp->next);
+				tmp = tmp->next;
+				/* code */
+			}
+		}
 	}
 	return (0);
 }

@@ -20,7 +20,7 @@ section .text
 		mov		rdi, 16									; rdi = rax (len + 1)
 		call	malloc	wrt ..plt						; malloc (rdi(len + 1))
 		pop		rdi										; take the save of the 1st-arg
-		mov		dword [rax + OFFSET_DATA], edi			; use 4 octet = data and data = value(edi(4 octet(int)))
+		mov		qword [rax + OFFSET_DATA], rdi			; use 4 octet = data and data = value(edi(4 octet(int)))
 		mov		qword [rax + OFFSET_NEXT], 0			; at octet 8 use 8 octet = next and next take 0
 		ret												; return rax(the node)
 

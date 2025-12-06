@@ -11,9 +11,9 @@ section .text
 		.loop:
 			mov		al, [rdi]			; recup le char a *str1
 			mov		r8b, [rsi]			; recup le char a *str2
-			cmp		al, r8b				; mets a jour les flags
+			cmp		al, r8b				; update the flags
 			jne		.not_same			; is cmp *str1 != *str2 go to ".not_same"
-			test	al, al				; mets a jour les flags
+			test	al, al				; update the flags
 			je		.done				; jmp si == '\0' ".done" (finish return 0)
 			inc		rdi					; rdi++
 			inc		rsi					; rsi++

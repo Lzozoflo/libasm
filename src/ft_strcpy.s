@@ -13,7 +13,7 @@ section .text
 		.loop:
 			mov		r8b, [rsi + rax]	; recup le char a src[i]
 			mov		[rdi + rax], r8b	; cpy le char de src[i] dans dest
-			test	r8b, r8b			; mets a jour les flag
+			test	r8b, r8b			; update the flag
 			je		.done				; si == '\0' go to ".done"
 			inc		rax					; rax++
 			jmp		.loop				; go to ".loop"

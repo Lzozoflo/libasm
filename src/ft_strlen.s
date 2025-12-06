@@ -1,5 +1,5 @@
 
-		; test	rdi,	rdi					; mets a jour les flags
+		; test	rdi,	rdi					; update the flags
 		; je		.done						; si rdi == NULL go to ".done"
 
 ;	extern int		ft_strlen	(char *s);
@@ -13,7 +13,7 @@ section .text
 		jmp		.loop						; go to ".loop"
 ;---------------------------------------------------------------------
 		.loop:
-			cmp		byte	[rdi + rax], 0	; mets a jour les flags
+			cmp		byte	[rdi + rax], 0	; update the flags
 			je		.done					; si [rdi + rax] == '\0'
 			inc		rax						; rax++
 			jmp		.loop					; go to ".loop"

@@ -4,8 +4,8 @@
 
 typedef struct s_list
 {
-	int		data;			// 4
-	struct s_list *next;	// 8
+	char			*data;		// 8
+	struct s_list	*next;		// 8
 } t_list;
 
 
@@ -19,10 +19,11 @@ extern ssize_t	ft_read		(int fd, void *buf, size_t count);					// Mandatory
 extern char		*ft_strdup	(const char *str);									// Mandatory
 
 
-extern void		ft_list_push_front(t_list **begin_list, void *data);				// Bonus
-extern int		ft_list_size(t_list *begin_list);										// Bonus
+extern void		ft_list_push_front(t_list **begin_list, void *data);			// Bonus
+extern int		ft_list_size(t_list *begin_list);								// Bonus
+extern void		ft_list_sort(t_list **begin_list, int (*cmp)());				// Bonus
 
 
-extern void		*ft_list_new(int value); 										// my bonus
+extern void		*ft_list_new(char *value); 										// my bonus
 
 #endif

@@ -1,6 +1,6 @@
 ; typedef struct s_list
 ; {
-; 	int		data;			//4
+; 	void		*data;		//8
 ; 	struct s_list *next;	// 8
 ; } t_list
 %define OFFSET_DATA		0		; int data		start at offset 0
@@ -24,8 +24,7 @@ section .text
 			mov		rdi, 16									; rdi = rax (len + 1)
 			call	malloc	wrt ..plt						; malloc (rdi(len + 1))
 			pop		rsi										; take the save of the 2nd-arg
-			mov		esi, [rsi]								; take the int value inside ptr (var = *rsi)
-			mov		dword [rax + OFFSET_DATA], esi			; use 4 octet = data and data = value(edi(4 octet(int)))
+			mov		qword [rax + OFFSET_DATA], rsi			; use 4 octet = data and data = value(edi(4 octet(int)))
 			mov		qword [rax + OFFSET_NEXT], 0			; at octet 8 use 8 octet = next and next take NULL
 			jmp		.push_front								; return rax(the node)
 
