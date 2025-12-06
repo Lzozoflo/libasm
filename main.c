@@ -79,11 +79,10 @@ int main(int ac, char** av)
 		{
 			printf("\n\n------ {-[print list]-} ------");
 			t_list *tmp = node;
-			while (tmp)
-			{
+			while (tmp) {
+
 				printf("\ntmp p: %p, adr_data: %p, data: '%s', next: %p", tmp, &tmp->data, tmp->data, tmp->next);
 				tmp = tmp->next;
-				/* code */
 			}
 		}
 
@@ -101,11 +100,10 @@ int main(int ac, char** av)
 		{
 			printf("\n\n------ {-[print list]-} ------");
 			t_list *tmp = node;
-			while (tmp)
-			{
+			while (tmp) {
+
 				printf("\ntmp p: %p, adr_data: %p, data: '%s', next: %p", tmp, &tmp->data, tmp->data, tmp->next);
 				tmp = tmp->next;
-				/* code */
 			}
 		}
 	}

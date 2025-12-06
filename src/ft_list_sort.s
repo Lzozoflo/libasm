@@ -65,47 +65,52 @@ section .text
 					call	rbx									; call cmp
 					cmp		rax, 0								; update the flags
 					jg		.swap_head							; return value cmp > 0 go to swap
-					jmp		.done
+					jmp		.loop2_cor
 
 ;---------------------------------------------------------------------
 				.swap_head:
-					mov		[rcx],	r10								; change head
-					mov		r8, [r10 + OFFSET_NEXT]					; tmp = a
-					mov		[r10 + OFFSET_NEXT], r9					; a = b
-					mov		[r9 + OFFSET_NEXT], r8					; b = tmp
-					mov		r8, r9									; tmp = a
-					mov		r9, r10									; a = b
-					mov		r10, r8									; b = tmp
-					mov		rcx, r9									; save the prev node after .next
-					jmp		.done									; continue the list
+					mov		[rcx],	r10							; change head
+					mov		r8, [r10 + OFFSET_NEXT]				; tmp = a
+					mov		[r10 + OFFSET_NEXT], r9				; a = b
+					mov		[r9 + OFFSET_NEXT], r8				; b = tmp
+					mov		r8, r9								; tmp = a
+					mov		r9, r10								; a = b
+					mov		r10, r8								; b = tmp
+					mov		rcx, r9								; save the prev node after .next
+					jmp		.next								; continue the list
 				; before * -> r9 -> r10 -> ?
 				; after * -> r10 -> r9 -> ?
 
-; ;---------------------------------------------------------------------
-; ;							core
-; ;---------------------------------------------------------------------
-; 				.loop2_cor:
-; 					mov		rdi,	qword [r9 + OFFSET_DATA]	; rdi = r9.data
-; 					mov		r10,	qword [r9 + OFFSET_NEXT]	; r10 = r9.next
-; 					mov		rsi,	qword [r10 + OFFSET_DATA]	; rsi = r10.data
-; 					call	rbx									; call cmp
-; 					cmp		rax, 0								; update the flags
-; 					jg		.swap								; return value cmp > 0 go to swap
-; 					jmp		.next								; continue the list
+;---------------------------------------------------------------------
+;							core
+;---------------------------------------------------------------------
+				.loop2_cor:
+					mov		rdi,	qword [r9 + OFFSET_DATA]	; rdi = r9.data
+					mov		r10,	qword [r9 + OFFSET_NEXT]	; r10 = r9.next
+					mov		rsi,	qword [r10 + OFFSET_DATA]	; rsi = r10.data
+					call	rbx									; call cmp
+					cmp		rax, 0								; update the flags
+					jg		.swap								; return value cmp > 0 go to swap
+					jmp		.next								; continue the list
 
-; ;---------------------------------------------------------------------
-; 				.swap:
-; 					mov	r8, [r10 + OFFSET_NEXT]					; tmp = a
-; 					mov [r10 + OFFSET_NEXT], r9					; a = b
-; 					mov [r9 + OFFSET_NEXT], r8					; b = tmp
-; 					jmp		.next
+;---------------------------------------------------------------------
+				.swap:
+					mov		qword [rcx + OFFSET_NEXT], r10		; prev node.next = node
+					mov		r8, [r10 + OFFSET_NEXT]				; tmp = a
+					mov		[r10 + OFFSET_NEXT], r9				; a = b
+					mov		[r9 + OFFSET_NEXT], r8				; b = tmp
+					mov		r8, r9								; tmp = a
+					mov		r9, r10								; a = b
+					mov		r10, r8								; b = tmp
+					jmp		.next
 
-; ;---------------------------------------------------------------------
-; 				.next:
-; 					mov		r9,		qword [r9 + OFFSET_NEXT]	; r9 = r9.next
-; 					cmp		qword [r9 + OFFSET_NEXT], 0			; update the flags
-; 					je		.done								; r9.next != NULL (loop)
-; 					jmp		.loop2_cor								; go to ".loop2" until r9.next == NULL
+;---------------------------------------------------------------------
+				.next:
+					mov		rcx, r9								; save the prev node after .next
+					mov		r9,		qword [r9 + OFFSET_NEXT]	; r9 = r9.next
+					cmp		qword [r9 + OFFSET_NEXT], 0			; update the flags
+					je		.loop								; r9.next != NULL (loop)
+					jmp		.loop2_cor								; go to ".loop2" until r9.next == NULL
 
 ;---------------------------------------------------------------------
 			.done:

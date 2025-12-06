@@ -68,13 +68,13 @@ prog: all
 test: all
 	$(CC) $(CFLAGS) $(MAIN) $(NAME) -o $(BINARY_NAME)
 
-	@if [ -z "$(ARG)" ]; then \
+	@if [ -z "$(ARG0)" ]; then \
 		echo "❌ ARG est vide, veuillez fournir un argument."; \
 		exit 42; \
 	else \
 		echo "-----------------------------------------------------------------------------";\
-		echo "✔ exécutable créé et lancé avec : ./$(BINARY_NAME) [$(ARG)] [$(ARG2)]"; \
-		./$(BINARY_NAME) $(ARG) $(ARG2); \
+		echo "✔ exécutable créé et lancé avec : ./$(BINARY_NAME) [$(ARG0)] [$(ARG1)] [$(ARG2)] [$(ARG3)] [$(ARG4)]"; \
+		./$(BINARY_NAME) $(ARG0) $(ARG1) $(ARG2) $(ARG3) $(ARG4); \
 	fi
 
 	@rm -rf $(OBJ_DIR)
@@ -83,13 +83,13 @@ test: all
 vtest: all
 	$(CC) $(CFLAGS) -g3 $(MAIN) $(NAME) -o $(BINARY_NAME)
 
-	@if [ -z "$(ARG)" ]; then \
+	@if [ -z "$(ARG0)" ]; then \
 		echo "❌ ARG est vide, veuillez fournir un argument."; \
 		exit 42; \
 	else \
 		echo "-----------------------------------------------------------------------------";\
-		echo "✔ exécutable créé et lancé avec : ./$(BINARY_NAME) [$(ARG)] [$(ARG2)]"; \
-		valgrind --leak-check=full --show-leak-kinds=all --show-mismatched-frees=yes --track-fds=yes --trace-children=yes ./$(BINARY_NAME) $(ARG) $(ARG2); \
+		echo "✔ exécutable créé et lancé avec : ./$(BINARY_NAME) [$(ARG0)] [$(ARG1)] [$(ARG2)] [$(ARG3)] [$(ARG4)]"; \
+		valgrind --leak-check=full --show-leak-kinds=all --show-mismatched-frees=yes --track-fds=yes --trace-children=yes ./$(BINARY_NAME) $(ARG0) $(ARG1) $(ARG2) $(ARG3) $(ARG4); \
 	fi
 
 	@rm -rf $(OBJ_DIR)
