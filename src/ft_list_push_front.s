@@ -16,9 +16,6 @@ extern malloc;
 section .text
 
 	ft_list_push_front:
-		jmp	.ft_list_new
-
-		.ft_list_new:
 			push	rdi										; save 1st-arg
 			push	rsi										; save 2st-arg
 			mov		rdi, 16									; rdi = rax (len + 1)
