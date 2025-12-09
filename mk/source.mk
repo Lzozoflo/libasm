@@ -23,15 +23,16 @@ SRC		+= ft_strdup.s
 SRC		+= ft_write.s
 SRC		+= ft_read.s
 SRC		+= ft_read.s
-# SRC		+=
+#bonus
 SRC		+= ft_list_push_front.s
 SRC		+= ft_list_size.s
 SRC		+= ft_list_sort.s
-# SRC		+= ft_list_remove_if.s
+SRC		+= ft_list_remove_if.s
 
 SRC		+= ft_list_new.s  # my_bonus
+SRC		+= ft_list_clear.s
 
-
+# SRC		+=
 
 
 # for a new SRC add a new :

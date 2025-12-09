@@ -5,7 +5,11 @@
 
 #include "libasm.h"
 
-
+void	ft_oui(void *v){
+	(void)v;
+	free(v);
+	return;
+}
 /* ---- test ft_strcmp ---- */
 int main(int ac, char** av)
 {
@@ -60,10 +64,11 @@ int main(int ac, char** av)
 	// 	ft_read(0,buff, 9);
 
 
+
 	printf("\n\n------ {-[bonus part]-} ------");
 	{
 		printf("\n------ {-[my_bonus part]-} ------");
-		t_list *node = ft_list_new(av[1]);
+		t_list *node = ft_list_new(ft_strdup(av[1]));
 		printf("\n\nnode p: %p, adr_data: %p, data: '%s", node, &node->data, node->data);
 
 
@@ -72,7 +77,7 @@ int main(int ac, char** av)
 
 		for (int i = 2; i < ac; i++) {
 			printf("\n\nft_list_push_front(&node, &av[i]: '%s');\n", av[i]);
-			ft_list_push_front(&node, av[i]);
+			ft_list_push_front(&node, ft_strdup(av[i]));
 			printf("\nnode p: %p, adr_data: %p, data: '%s', next: %p", node, &node->data, node->data, node->next);
 		}
 
@@ -106,6 +111,22 @@ int main(int ac, char** av)
 				tmp = tmp->next;
 			}
 		}
+
+			printf("\n\n------ {-[ft_list_remove_if]-} ------");
+
+		ft_list_remove_if(&node, "ab", ft_strcmp, ft_oui);
+
+		{
+			printf("\n\n------ {-[print list]-} ------");
+			t_list *tmp = node;
+			while (tmp) {
+
+				printf("\ntmp p: %p, adr_data: %p, data: '%s', next: %p", tmp, &tmp->data, tmp->data, tmp->next);
+				tmp = tmp->next;
+			}
+		}
+		ft_list_clear(node);
+
 	}
 	return (0);
 }
