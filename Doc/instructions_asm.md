@@ -3,42 +3,27 @@
 Ce document liste les instructions assembleur x86 courantes, avec une ligne d'exemple pour illustrer leur utilisation.
 
 ---
+## Instructions que j'utilise le plus
+```asm
+	mov
+	xor
+	cmp
+	test
+	inc
+	dec
+	jmp
+	jg
+	jng
+	jl
+	jnl
+	call
+```
 
 ## Instructions Générales (Base)
 
 ### MOV — Copier une valeur
 ```asm
 mov rax, rbx    ; copie le contenu de RBX dans RAX
-```
-
-### ADD — Additionner
-```asm
-add rax, 5      ; rax = rax + 5
-```
-
-### SUB — Soustraire
-```asm
-sub rax, rbx    ; rax = rax - rbx
-```
-
-### MUL — Multiplication non signée
-```asm
-mul rbx         ; RDX:RAX = RAX * RBX (non signé)
-```
-
-### IMUL — Multiplication signée
-```asm
-imul rax, rbx   ; rax = rax * rbx (signé)
-```
-
-### DIV — Division non signée
-```asm
-div rbx         ; RAX = quotient, RDX = reste (non signé)
-```
-
-### IDIV — Division signée
-```asm
-idiv rbx        ; division signée
 ```
 
 ### INC — Incrémenter
@@ -67,16 +52,6 @@ cmp <value1>, <value2>    ; met à jour les flags selon rax - rbx
 test rax, rax   ; fait un AND mais sans asigner une valeur en mettant à jour les flags, souvent pour tester si rax == 0
 ```
 
-### NEG — Négatif
-```asm
-neg rax         ; rax = -rax
-```
-
-### NOT — Complément binaire
-```asm
-not rbx         ; inverse tous les bits
-```
-
 ### XOR — OU exclusif
 ```asm
 
@@ -86,8 +61,51 @@ not rbx         ; inverse tous les bits
 1 XOR 1 = 0
 
 xor rax, rax    ; met rax à 0
-
 ```
+
+### ADD — Additionner
+```asm
+add rax, 5      ; rax = rax + 5
+```
+
+### SUB — Soustraire
+```asm
+sub rax, rbx    ; rax = rax - rbx
+```
+
+### NEG — Négatif
+```asm
+neg rax         ; rax = -rax
+```
+
+### Multiplication
+#### MUL —  non signée
+```asm
+mul rbx         ; RDX:RAX = RAX * RBX (non signé)
+```
+
+#### IMUL — signée
+```asm
+imul rax, rbx   ; rax = rax * rbx (signé)
+```
+
+#### Division
+### DIV — non signée
+```asm
+div rbx         ; RAX = quotient, RDX = reste (non signé)
+```
+
+### IDIV — signée
+```asm
+idiv rbx        ; division signée
+```
+
+
+### NOT — Complément binaire
+```asm
+not rbx         ; inverse tous les bits
+```
+
 ### AND — ET logique
 ```asm
 
@@ -103,7 +121,6 @@ and rbx, 0xFF   ; masque les bits de rbx
 ```asm
 or rax, 1       ; rax |= 1
 ```
-
 
 ### SHL / SAL — Décalage à gauche
 ```asm
@@ -142,47 +159,53 @@ rcr rax, 1
 
 ---
 
+# Instructions de Contrôle de Flux  j../jmp = jump
 
-# Instructions de Contrôle de Flux
+## Saut conditionnel
 
-### JMP — Saut inconditionnel
+### JMP — go to [label]
 ```asm
-jmp label       ; saute vers label
+jmp		<label>		;   go to "label"
 ```
 
-## Saut si strictement ...
+## Saut conditionnel
 
-### JE / JZ — Effectue un saut si <value1> == <value2>
+### JE / JZ — Effectue un saut si [value1] == [value2]
 ```asm
-je equal_case   ; saute si dernier cmp a donné égal
+je		<label>		;   e = equal
 ```
 
-### JNE / JNZ — Effectue un saut si <value1> != <value2>
+### JNE / JNZ — Effectue un saut si [value1] != [value2]
 ```asm
-jne not_equal
+jne		<label>		;   ne = not | equal
 ```
 
-### JG / JNLE — Effectue un saut si <value1> > <value2>
+### JG / JNLE — Effectue un saut si [value1] > [value2]
 ```asm
-jg greater
+jg		<label>		;   g   = greater
+jnle	<label>		;   nge = not | lower | equal
 ```
 
-### JL / JNGE —  Effectue un saut si <value1> < <value2>
+### JGE / JNL — Effectue un saut si [value1] >= [value2]
 ```asm
-jl lower
+jge		<label>		;   ge  = greater | equal
+jnl		<label>		;   nl  = not | lower
 ```
 
-## Saut si strictement ou égal ...
-
-### JGE / JNL — Effectue un saut si <value1> >= <value2>
+### JL / JNGE —  Effectue un saut si [value1] < [value2]
 ```asm
-jge greater_equal
+jl		<label>		;   l   = lower
+jnge	<label>		;   nge = not | greater | equal
 ```
 
-### JLE / JNG — Effectue un saut si <value1> <= <value2>
+### JLE / JNG — Effectue un saut si [value1] <= [value2]
 ```asm
-jle lower_equal
+jle		<label>		;   le  = lower | equal
+jng		<label>		;   ng  = not | greater
 ```
+
+
+----
 
 
 

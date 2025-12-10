@@ -65,68 +65,71 @@ int main(int ac, char** av)
 
 
 
-	printf("\n\n------ {-[bonus part]-} ------");
+	// printf("\n\n------ {-[bonus part]-} ------");
 	{
-		printf("\n------ {-[my_bonus part]-} ------");
-		t_list *node = ft_list_new(ft_strdup(av[1]));
-		printf("\n\nnode p: %p, adr_data: %p, data: '%s", node, &node->data, node->data);
+	// 	printf("\n------ {-[my_bonus part]-} ------");
+	// 	t_list *node = ft_list_new(ft_strdup(av[1]));
+	// 	printf("\n\nnode p: %p, adr_data: %p, data: '%s", node, &node->data, node->data);
 
 
 
-		printf("\n\n------ {-[ft_list_push_front]-} ------");
+	// 	printf("\n\n------ {-[ft_list_push_front]-} ------");
 
-		for (int i = 2; i < ac; i++) {
-			printf("\n\nft_list_push_front(&node, &av[i]: '%s');\n", av[i]);
-			ft_list_push_front(&node, ft_strdup(av[i]));
-			printf("\nnode p: %p, adr_data: %p, data: '%s', next: %p", node, &node->data, node->data, node->next);
-		}
+	// 	for (int i = 2; i < ac; i++) {
+	// 		printf("\n\nft_list_push_front(&node, &av[i]: '%s');\n", av[i]);
+	// 		ft_list_push_front(&node, ft_strdup(av[i]));
+	// 		printf("\nnode p: %p, adr_data: %p, data: '%s', next: %p", node, &node->data, node->data, node->next);
+	// 	}
 
-		{
-			printf("\n\n------ {-[print list]-} ------");
-			t_list *tmp = node;
-			while (tmp) {
+	// 	{
+	// 		printf("\n\n------ {-[print list]-} ------");
+	// 		t_list *tmp = node;
+	// 		while (tmp) {
 
-				printf("\ntmp p: %p, adr_data: %p, data: '%s', next: %p", tmp, &tmp->data, tmp->data, tmp->next);
-				tmp = tmp->next;
-			}
-		}
+	// 			printf("\ntmp p: %p, adr_data: %p, data: '%s', next: %p", tmp, &tmp->data, tmp->data, tmp->next);
+	// 			tmp = tmp->next;
+	// 		}
+	// 	}
 
-		// printf("\nnode->next->data : %d", node->next->data);
-		// printf("\nnode->next->next p: %p", node->next->next);
+	// 	// printf("\nnode->next->data : %d", node->next->data);
+	// 	// printf("\nnode->next->next p: %p", node->next->next);
 
-		printf("\n\n------ {-[nft_list_size]-} ------");
+	// 	printf("\n\n------ {-[nft_list_size]-} ------");
 
-		printf("\n\nft_list_size(node): %d", ft_list_size(node));
+	// 	printf("\n\nft_list_size(node): %d", ft_list_size(node));
 
-		printf("\n\n------ {-[ft_list_sort]-} ------");
-		ft_list_sort(&node, ft_strcmp);
+	// 	printf("\n\n------ {-[ft_list_sort]-} ------");
+	// 	ft_list_sort(&node, ft_strcmp);
 
 
-		{
-			printf("\n\n------ {-[print list]-} ------");
-			t_list *tmp = node;
-			while (tmp) {
+	// 	{
+	// 		printf("\n\n------ {-[print list]-} ------");
+	// 		t_list *tmp = node;
+	// 		while (tmp) {
 
-				printf("\ntmp p: %p, adr_data: %p, data: '%s', next: %p", tmp, &tmp->data, tmp->data, tmp->next);
-				tmp = tmp->next;
-			}
-		}
+	// 			printf("\ntmp p: %p, adr_data: %p, data: '%s', next: %p", tmp, &tmp->data, tmp->data, tmp->next);
+	// 			tmp = tmp->next;
+	// 		}
+	// 	}
 
-			printf("\n\n------ {-[ft_list_remove_if]-} ------");
+	// 		printf("\n\n------ {-[ft_list_remove_if]-} ------");
 
-		ft_list_remove_if(&node, "ab", ft_strcmp, ft_oui);
+	// 	ft_list_remove_if(&node, "ab", ft_strcmp, ft_oui);
 
-		{
-			printf("\n\n------ {-[print list]-} ------");
-			t_list *tmp = node;
-			while (tmp) {
+	// 	{
+	// 		printf("\n\n------ {-[print list]-} ------");
+	// 		t_list *tmp = node;
+	// 		while (tmp) {
 
-				printf("\ntmp p: %p, adr_data: %p, data: '%s', next: %p", tmp, &tmp->data, tmp->data, tmp->next);
-				tmp = tmp->next;
-			}
-		}
-		ft_list_clear(node);
+	// 			printf("\ntmp p: %p, adr_data: %p, data: '%s', next: %p", tmp, &tmp->data, tmp->data, tmp->next);
+	// 			tmp = tmp->next;
+	// 		}
+	// 	}
+	// 	ft_list_clear(node);
 
+
+
+		printf("error base: %d", ft_atoi_base("abc", av[1]));
 	}
 	return (0);
 }

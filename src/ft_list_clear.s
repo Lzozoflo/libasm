@@ -7,10 +7,7 @@
 %define OFFSET_NEXT		8		; t_list *next	start at offset 8
 
 ; extern void  ft_list_clear(t_list *begin_list);
-;			   ft_list_clear(rdi, rsi, rdx, rcx);
-
-;																		  (*cmp)(list_ptr->data, data_ref)
-;																						 (*free_fct)(list_ptr->data);
+;			   ft_list_clear(rdi);
 
 
 global ft_list_clear

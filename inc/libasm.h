@@ -19,6 +19,7 @@ extern ssize_t	ft_read		(int fd, void *buf, size_t count);					// Mandatory
 extern char		*ft_strdup	(const char *str);									// Mandatory
 
 
+extern int		ft_atoi_base(char *str, char *base);								// Bonus
 extern void		ft_list_push_front(t_list **begin_list, void *data);			// Bonus
 extern int		ft_list_size(t_list *begin_list);								// Bonus
 extern void		ft_list_sort(t_list **begin_list, int (*cmp)());				// Bonus

@@ -24,6 +24,7 @@ SRC		+= ft_write.s
 SRC		+= ft_read.s
 SRC		+= ft_read.s
 #bonus
+SRC		+= ft_atoi_base.s
 SRC		+= ft_list_push_front.s
 SRC		+= ft_list_size.s
 SRC		+= ft_list_sort.s

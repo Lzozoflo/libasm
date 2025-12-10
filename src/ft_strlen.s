@@ -1,9 +1,6 @@
 
-		; test	rdi,	rdi					; update the flags
-		; je		.done						; si rdi == NULL go to ".done"
-
 ;	extern int		ft_strlen	(char *s);
-;	extern int		ft_strlen	(rdi);
+;					ft_strlen	(rdi);
 
 global ft_strlen
 section .text
