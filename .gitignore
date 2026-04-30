@@ -3,7 +3,6 @@
 .obj
 .dep
 *.o
-error
 hello
 libasm.a
 program
