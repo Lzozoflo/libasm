@@ -1,8 +1,9 @@
-; typedef struct s_list
+; struct t_list
 ; {
 ; 	void		*data;		//8
 ; 	struct s_list *next;	// 8
-; } t_list
+; }
+; endstruct
 %define OFFSET_DATA		0		; int data		start at offset 0
 %define OFFSET_NEXT		8		; t_list *next	start at offset 8
 

@@ -36,7 +36,6 @@ section .text
 		mov		rdi,	rax								; take size
 		call	ft_list_size							; get list_size
 		mov		r13,	rax								; take size
-		jmp		.loop									; go to ".loop"
 
 		;  r15 used as: used as: fonction ptr
 		;  r14 used as: used as: t_list **prev
@@ -96,4 +95,4 @@ section .text
 				pop		r13				; callee-saved
 				pop		r14				; callee-saved
 				pop		r15				; callee-saved
-				ret											; return
+				ret						; return

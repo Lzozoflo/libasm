@@ -1,7 +1,7 @@
-
 #include <stdio.h>		// printf
 #include <stdlib.h>		// malloc
 #include <string.h>
+#include <unistd.h>		// write
 
 #include "libasm.h"
 
@@ -45,11 +45,12 @@ int main(int ac, char** av)
 	// }
 
 
-	// printf("\n\n------ {-[write]-} ------\n");
-	// for (int i = 1; i < ac; i++) {
-	// 	printf("\n\nav[%d] : '%s'\n", i, av[i]);
-	// 	printf("\nreturn write : '%zd'\n", ft_write(1, av[i], ft_strlen(av[i])));
-	// }
+	printf("\n\n------ {-[write]-} ------\n");
+	for (int i = 1; i < ac; i++) {
+		printf("\n\nav[%d] : '%s'\n", i, av[i]);
+		printf("\nreturn ft_write : '%zd'\n", ft_write(4, av[i], ft_strlen(av[i])));perror("");
+		printf("\nreturn write : '%zd'\n", write(4, av[i], ft_strlen(av[i])));perror("");
+	}
 
 	// printf("\n\n------ {-[ft_strdup]-} ------\n");
 	// for (int i = 1; i < ac; i++) {

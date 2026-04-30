@@ -7,7 +7,6 @@ section .text
 
 	ft_strlen:
 		xor		rax,	rax					; int i = 0 (mov rax, 0)
-		jmp		.loop						; go to ".loop"
 ;---------------------------------------------------------------------
 		.loop:
 			cmp		byte	[rdi + rax], 0	; update the flags

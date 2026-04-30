@@ -161,7 +161,7 @@ rcr rax, 1
 
 # Instructions de Contrôle de Flux  j../jmp = jump
 
-## Saut conditionnel
+## Saut inconditionnel
 
 ### JMP — go to [label]
 ```asm
