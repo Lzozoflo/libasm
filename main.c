@@ -45,12 +45,12 @@ int main(int ac, char** av)
 	// }
 
 
-	printf("\n\n------ {-[write]-} ------\n");
-	for (int i = 1; i < ac; i++) {
-		printf("\n\nav[%d] : '%s'\n", i, av[i]);
-		printf("\nreturn ft_write : '%zd'\n", ft_write(4, av[i], ft_strlen(av[i])));perror("");
-		printf("\nreturn write : '%zd'\n", write(4, av[i], ft_strlen(av[i])));perror("");
-	}
+	// printf("\n\n------ {-[write]-} ------\n");
+	// for (int i = 1; i < ac; i++) {
+	// 	printf("\n\nav[%d] : '%s'\n", i, av[i]);
+	// 	printf("\nreturn ft_write : '%zd'\n", ft_write(4, av[i], ft_strlen(av[i])));perror("");
+	// 	printf("\nreturn write : '%zd'\n", write(4, av[i], ft_strlen(av[i])));perror("");
+	// }
 
 	// printf("\n\n------ {-[ft_strdup]-} ------\n");
 	// for (int i = 1; i < ac; i++) {
@@ -67,7 +67,7 @@ int main(int ac, char** av)
 
 
 	// printf("\n\n------ {-[bonus part]-} ------");
-	{
+	// {
 	// 	printf("\n------ {-[my_bonus part]-} ------");
 	// 	t_list *node = ft_list_new(ft_strdup(av[1]));
 	// 	printf("\n\nnode p: %p, adr_data: %p, data: '%s", node, &node->data, node->data);
@@ -129,8 +129,14 @@ int main(int ac, char** av)
 	// 	ft_list_clear(node);
 
 
-
-		printf("error base: %d", ft_atoi_base("abc", av[1]));
-	}
+	char *tmp = "abcdefghij";
+    printf("base ok: %d\n", ft_atoi_base("-bdca", tmp)); 		// ok
+	printf("base ok: %d\n", ft_atoi_base(" \n+-bcdef", tmp)); 	// ok
+    printf("base ok: %d\n", ft_atoi_base(" \n+--cdef", tmp)); 	// ok
+    printf("base error: %d\n", ft_atoi_base(" \n+- abcdef", tmp));	// error
+    printf("base error: %d\n", ft_atoi_base(" \n+-acde4f", tmp));	// error
+    printf("base error: %d\n", ft_atoi_base("+-abcdef", tmp));	// error
+    printf("base error: %d\n", ft_atoi_base("+-acdef", tmp));	// error
+    printf("base: %d\n", ft_atoi_base(" \n+-dabcdef", tmp));
 	return (0);
 }

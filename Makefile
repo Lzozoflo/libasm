@@ -64,7 +64,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.s
 
 prog: re
 	$(CC) $(CFLAGS) -g3 $(MAIN) $(NAME) -o $(BINARY_NAME)
-	gdb -x ./error/gdb/gdbinit.txt program
+# 	gdb -x ./error/gdb/gdbinit.txt program
 
 test: all
 	$(CC) $(CFLAGS) $(MAIN) $(NAME) -o $(BINARY_NAME)
