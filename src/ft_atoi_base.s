@@ -12,65 +12,65 @@ section .text
 		xor		rax,	rax
 	;	check arguments
 		test	rdi,	rdi
-		je		.done										;	str == NULL
+		je		.done											;	str == NULL
 
 		test	rsi,	rsi
-		je		.done										;	base == NULL
+		je		.done											;	base == NULL
 
 ;--------------------------------------------------------------------
 	.pushs:
-	;	Sauvegarde des registres callee-saved
-		push	r15											;	save r15 and pop at .pops
-		push	r14											;	save r14 and pop at .pops
-		push	r13											;	save r13 and pop at .pops
-		push	r12											;	save r12 and pop at .pops
+		;	Sauvegarde des registres callee-saved
+		push	r15												;	save r15 and pop at .pops
+		push	r14												;	save r14 and pop at .pops
+		push	r13												;	save r13 and pop at .pops
+		push	r12												;	save r12 and pop at .pops
 
-		mov		r15,	rdi									;	r15 = str
-		mov		r14,	rsi									;	r14 = base
+		mov		r15,	rdi										;	r15 = str
+		mov		r14,	rsi										;	r14 = base
 		mov		rdi,	rsi
-		call	ft_strlen									;	baseLen
-		cmp		rax, 2										;	update flags
-		jl		.error							        	;	si baseLen < 2 base_size
-		mov		r13, rax									;	r13 = baseLen
+		call	ft_strlen										;	baseLen
+		cmp		rax, 2											;	update flags
+		jl		.error							        		;	si baseLen < 2 base_size
+		mov		r13, rax										;	r13 = baseLen
 		mov		rdi,	r14
-		mov		r9b,	byte [rsi]							;	r9b = *base
+		mov		r9b,	byte [rsi]								;	r9b = *base
 
 ;---------------------------------------------------------------------
 		;	check '+' '-' 'whitespace character'
 		.check_char_base:
-			cmp		r9b,		43							;	'+'
+			cmp		r9b,		43								;	'+'
 			je		.error
-			cmp		r9b,		45							;	'-'
+			cmp		r9b,		45								;	'-'
 			je		.error
-			cmp		r9b,		32							;	' '      space
+			cmp		r9b,		32								;	' '      space
 			je		.error
-			cmp		r9b,		9							;	'\t'     horizontal tab
+			cmp		r9b,		9								;	'\t'     horizontal tab
 			je		.error
-			cmp		r9b,		10							;	'\n'     newline
+			cmp		r9b,		10								;	'\n'     newline
 			je		.error
-			cmp		r9b,		11							;	'\v'     vertical tab
+			cmp		r9b,		11								;	'\v'     vertical tab
 			je		.error
-			cmp		r9b,		12							;	'\f'     form feed
+			cmp		r9b,		12								;	'\f'     form feed
 			je		.error
-			cmp		r9b,		13							;	'\r'     carriage return
+			cmp		r9b,		13								;	'\r'     carriage return
 			je		.error
 			inc		rsi
-			mov		r9b,	byte [rsi]						;	r9b = *base
+			mov		r9b,	byte [rsi]							;	r9b = *base
 			test	r9b,	r9b
 			jne		.check_char_base
 
 ;---------------------------------------------------------------------
 			mov		rdi,	r14
 			;	check_duplicate character
-			mov		r9b,	byte [rdi]						;	r9b = *base
+			mov		r9b,	byte [rdi]							;	r9b = *base
 			.loop_check_duplicate_i:
-				mov		rsi,	rdi							;	rsi = base
-				inc		rsi									;	rsi++
+				mov		rsi,	rdi								;	rsi = base
+				inc		rsi										;	rsi++
 				.loop_check_duplicate_j:
-					cmp		byte [rsi],	0					;	update the flags
-					je		.next_check_duplicate_i			;	if c == '/0'
-					cmp		r9b,	byte [rsi]				;	update the flags
-					je		.error							;	if c(*base) == *basecopy
+					cmp		byte [rsi],	0						;	update the flags
+					je		.next_check_duplicate_i				;	if c == '/0'
+					cmp		r9b,	byte [rsi]					;	update the flags
+					je		.error								;	if c(*base) == *basecopy
 					inc		rsi								;
 					jmp		.loop_check_duplicate_j
 			.next_check_duplicate_i:
@@ -82,6 +82,7 @@ section .text
 ;---------------------------------------------------------------------
 			mov		rdi,	r15									;	r15 = str
 
+			;	skip the white space character in str
 			.skip_white_space
 				mov		r9b,	byte [rdi]						;	r9b = *str
 				inc		rdi
@@ -99,6 +100,8 @@ section .text
 				je		.skip_white_space
 			
 
+
+			;	save the final sign
 			mov		rax, 1
 			jmp .is_neg
 
@@ -206,4 +209,3 @@ section .text
 				pop		r15										;	callee-saved
 			.done:
 				ret												;	return
-
